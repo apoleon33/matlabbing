@@ -99,8 +99,8 @@ title("FIGURE 3: Évolution de la vitesse");
 legend('vitesse du robot');
 
 % Question 4
-hold on;
-%plot(Qgps)
+newFig = figure;
+plot(Qgps)
 
 
 
