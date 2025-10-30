@@ -59,7 +59,7 @@ y2=map_bg(:,2); % Ordonn?es bord gauche
 % Afficharge FIGURE 1: Trac? du circuit
 fig001=figure;  % Cr?ation figure 001
 grid on;
-subplot(grid_dimensions(1),grid_dimensions(2), [1 2]);
+%subplot(grid_dimensions(1),grid_dimensions(2), [1 2]);
 hold on         %  Maintenir active la figure cr??e pour ajout de trac?s
 plot(x1,y1,'y.')% Tracé du bord droit du circuit non interpol? en jaune
 plot(x2,y2,'c.')% Tracé du bord gauche du circuit non interpol? en cyan
@@ -71,6 +71,8 @@ ylabel('y (m)') % Ordonn?es en metre
 title('FIGURE 1: tracé du circuit (Piste de test)') % Titre
 legend('bord droit','bord gauche', 'GPS non interpolée', 'GPS interpolée') % Légende
 
+fig002 = figure;
+
 
 
 % Question 3
@@ -80,7 +82,7 @@ deltaX(deltaX == 0) = [];
 deltaY = diff(Ygps);
 deltaY(deltaY == 0) = [];
 
-subplot(grid_dimensions(1),grid_dimensions(2), [4 6]);
+%subplot(grid_dimensions(1),grid_dimensions(2), [4 6]);
 plot(deltaX);
 hold on;
 plot(deltaY);
@@ -89,10 +91,11 @@ title("FIGURE 2: Évolution de la résolution de la trajectoire");
 legend('résolution en x', 'résolution en y');
 
 % calcul de l'évolution de la vitesse du véhicule
+fig003 = figure;
 distances = sqrt(deltaX.^2 + deltaY.^2);
 vitesses = distances ./ unique(Tgps)(1:end-1);
 
-subplot(grid_dimensions(1), grid_dimensions(2), 3);
+%subplot(grid_dimensions(1), grid_dimensions(2), 3);
 plot(vitesses);
 
 title("FIGURE 3: Évolution de la vitesse");
@@ -100,7 +103,9 @@ legend('vitesse du robot');
 
 % Question 4
 newFig = figure;
-plot(Qgps)
+plot(Tgps, Qgps)
+title('Évolution de la qualité au cours du temps');
+legend('Qgps');
 
 
 
